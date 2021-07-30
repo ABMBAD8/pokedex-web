@@ -43,12 +43,12 @@ export class AppComponent {
   }
 
   getPokemons() {
-    return this.http.get(`${environment.POKEMON_API}item/?limit=100&offset=0`)
+    return this.http.get(`${environment.POKEMON_API}pokemons`);
   }
 
   getPokemon(url: string) {
 
-    return this.http.get(`${url}`)
+    return this.http.get(`${environment.POKEMON_API}pokemon/${url}`)
   }
 
 }
