@@ -1,0 +1,31 @@
+<h1 class="col-md-12" style="background-color: rgb(63 190 167); text-align: center;"><strong>POKE-DEX</strong> </h1>
+<div class="container col-md-12">
+  <form class="form-inline">
+    <mat-form-field class="example-form-field" appearance="fill">
+      <mat-label style="color: aliceblue;">Search Pokemon Name</mat-label>
+      <input matInput type="text" id="searchText" onkeyup="filterPokemons()">
+    </mat-form-field>
+  </form>
+  <div class="row" style="height: 98%; overflow-y:auto; padding-left: 20px;" id="pokeRow">
+    <div class="container">
+      <div class="row">
+        <div *ngFor="let pokemon of pokemonHomeDetails" class="col-md-3">
+          <p class="column">
+            <mat-card class="size-card">
+              <mat-card-header>
+                <div mat-card-avatar class="example-header-image" style="
+                                    background-image: url({{pokemon.picture}});"></div>
+                <mat-card-title>{{pokemon.name}}</mat-card-title>
+                <mat-card-subtitle># {{pokemon.id}}</mat-card-subtitle>
+              </mat-card-header>
+              <mat-card-actions align="end">
+                <button mat-raised-button (click)="openDialog(pokemon.url)">DETAILS</button>
+              </mat-card-actions>
+            </mat-card>
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

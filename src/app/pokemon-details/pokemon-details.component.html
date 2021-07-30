@@ -1,0 +1,50 @@
+<h1 mat-dialog-title>{{pokemons.name}}</h1>
+<div style="text-align: center; color: rgb(0, 47, 255);">
+    <h2># {{pokemons.id}}</h2><br>
+    <img style="width: 300px; height: 300px;" src="{{pokemons.sprites.default}}" alt="{{pokemons.name}}">
+</div>
+<mat-dialog-content class="mat-typography">
+    <p>
+        <mat-list>
+            <mat-grid-list cols="4" rowHeight="1:1">
+                <div mat-subheader>Details</div>
+                <mat-grid-tile>
+                    <mat-list-item>
+                        <mat-icon style="color: blue;" mat-list-icon>badge</mat-icon>
+                        <div mat-line><strong>{{pokemons.name}}</strong></div>
+                        <div mat-line> Name </div>
+                    </mat-list-item>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <mat-list-item>
+                        <mat-icon style="color: green;" mat-list-icon>euro</mat-icon>
+                        <div mat-line><strong>{{pokemons.cost}}</strong></div>
+                        <div mat-line> Cost </div>
+                    </mat-list-item>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <mat-list-item>
+                        <mat-icon style="color: red;" mat-list-icon>bolt</mat-icon>
+                        <div mat-line *ngIf="pokemons.fling_power==null"><strong>0</strong></div>
+                        <div mat-line *ngIf="pokemons.fling_power!=null"><strong>{{pokemons.fling_power}}</strong></div>
+                        <div mat-line> Power </div>
+                    </mat-list-item>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <mat-list-item>
+                        <mat-icon mat-list-icon>
+                            blur_off</mat-icon>
+                        <div mat-line *ngIf="pokemons.fling_effect==null"><strong>0</strong></div>
+                        <div mat-line *ngIf="pokemons.fling_effect!=null"><strong>{{pokemons.fling_effect}}</strong>
+                        </div>
+                        <div mat-line> Fling effect </div>
+                    </mat-list-item>
+                </mat-grid-tile>
+            </mat-grid-list>
+            <mat-divider></mat-divider>
+        </mat-list>
+    </p>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-raised-button mat-dialog-close>Close</button>
+</mat-dialog-actions>
