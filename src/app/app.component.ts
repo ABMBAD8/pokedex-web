@@ -18,6 +18,7 @@ export class AppComponent {
   }
   ngOnInit() {
     this.getPokemons().toPromise().then((pokemons: PokemonResults) => {
+      console.log(pokemons);
       pokemons.results.forEach((result: Result) => {
         this.getPokemon(result.url).toPromise().then((pokemon: Pokemon) => {
           this.pokemonDetails = {
@@ -47,8 +48,8 @@ export class AppComponent {
   }
 
   getPokemon(url: string) {
-
-    return this.http.get(`${environment.POKEMON_API}pokemon/${url}`)
+    const urls = { url: url }
+    return this.http.post(`${environment.POKEMON_API}pokemon`, urls)
   }
 
 }

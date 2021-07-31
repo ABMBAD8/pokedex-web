@@ -3,6 +3,7 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dial
 import { AppComponent } from '../app.component';
 import { HttpClient } from '@angular/common/http';
 import { Pokemon, PokemonHomeDetails, PokemonResults, Result } from '../_modals/PokemonInterface';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-pokemon-details',
@@ -17,16 +18,18 @@ export class PokemonDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.pokemons = null;
-    this.getPokemon(this.data["url"]).toPromise().then((pokemon: Pokemon) => {
+    const urls = { url: this.data["url"] };
+
+    this.getPokemon(urls).toPromise().then((pokemon: Pokemon) => {
       this.pokemons = pokemon;
       console.info(this.pokemons)
     })
 
   }
 
-  getPokemon(url: string) {
+  getPokemon(url: any) {
 
-    return this.http.get(`${url}`)
+    return this.http.post(`${environment.POKEMON_API}pokemon`, url)
   }
 }
 
