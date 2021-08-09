@@ -1,17 +1,16 @@
 <div class="container col-md-12">
   <h1 class="col-md-12" style="text-align: center;"><strong class="text-white">POKE-DEX</strong> </h1>
   <div class="contents col-md-12">
-
-    <form class="form-inline">
-      <mat-form-field class="example-form-field" appearance="fill">
-        <mat-label style="color: aliceblue;">Search Pokemon Name</mat-label>
-        <input matInput type="text" class="text-white" id="searchText" onkeyup="filterPokemons()">
-      </mat-form-field>
+    <form class="form-inline waves-light" mdbWavesEffect>
+      <div class="md-form mt-0">
+        <input class="form-control mr-sm-2 text-white" style="font-size: large;" type="text" id="searchText"
+          onkeyup="filterPokemons()" placeholder="Search Pokemon Name ... " title="Search Pokemon Name" required />
+      </div>
     </form>
     <div class="col-md-12" style="height: 90%; overflow-y:auto;">
       <div class="row" id="pokeRow">
-        <div *ngFor="let pokemon of pokemonHomeDetails" class="col-md-3 mb-4">
-          <a>
+        <div *ngFor="let pokemon of pokemonHomeDetails" class="col-md-3">
+          <p>
             <mdb-card>
               <mdb-card-header>
                 <h3 class="font-weight-light"><img src="{{pokemon.picture}}" style="height: 50px; width: 50px;"
@@ -34,7 +33,7 @@
                 </button>
               </mdb-card-footer>
             </mdb-card>
-          </a>
+          </p>
         </div>
       </div>
     </div>
