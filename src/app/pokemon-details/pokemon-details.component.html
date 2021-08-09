@@ -1,55 +1,83 @@
-<h1 mat-dialog-title>{{pokemons.name}}</h1>
-<div style="text-align: center; color: rgb(0, 47, 255);">
-    <h2># {{pokemons.id}}</h2><br>
-    <img style="width: 100px; height: 100px;" src="{{pokemons.sprites.default}}" alt="{{pokemons.name}}">
-</div>
+<h2 mat-dialog-title>{{pokemons.name | uppercase}}</h2>
 <mat-dialog-content class="mat-typography">
-    <p>
-        <mat-list>
-            <mat-grid-list cols="4" rowHeight="1:1">
-                <div mat-subheader>Details</div>
-                <mat-grid-tile>
-                    <mat-list-item>
-                        <mat-icon style="color: blue;" mat-list-icon>badge</mat-icon>
-                        <div mat-line><strong>{{pokemons.name}}</strong></div>
-                        <div mat-line> Name </div>
-                    </mat-list-item>
-                </mat-grid-tile>
-                <mat-grid-tile>
-                    <mat-list-item>
-                        <mat-icon style="color: green;" mat-list-icon>euro</mat-icon>
-                        <div mat-line><strong>{{pokemons.cost}}</strong></div>
-                        <div mat-line> Cost </div>
-                    </mat-list-item>
-                </mat-grid-tile>
-                <mat-grid-tile>
-                    <mat-list-item>
-                        <mat-icon style="color: red;" mat-list-icon>bolt</mat-icon>
-                        <div mat-line *ngIf="pokemons.fling_power==null"><strong>0</strong></div>
-                        <div mat-line *ngIf="pokemons.fling_power!=null"><strong>{{pokemons.fling_power}}</strong></div>
-                        <div mat-line> Power </div>
-                    </mat-list-item>
-                </mat-grid-tile>
-                <mat-grid-tile>
-                    <mat-list-item>
-                        <mat-icon mat-list-icon>
-                            blur_off</mat-icon>
-                        <div mat-line *ngIf="pokemons.fling_effect==null"><strong>0</strong></div>
-                        <div mat-line *ngIf="pokemons.fling_effect!=null"><strong>{{pokemons.fling_effect}}</strong>
-                        </div>
-                        <div mat-line> Fling effect </div>
-                    </mat-list-item>
-                </mat-grid-tile>
-            </mat-grid-list>
-            <mat-divider></mat-divider>
-            <div *ngFor="let item of pokemons.effect_entries">
-                <p>{{item.effect}}</p>
+    <div style="text-align: center; color: rgb(0, 47, 255);">
+        <h2># {{pokemons.id}}</h2><br>
+        <img style="width: 100px; height: 100px;" src="{{pokemons.sprites.default}}" alt="{{pokemons.name}}">
+    </div>
+    <h2>Details</h2>
+    <div class="row">
+        <div class="col-md-2">
+            <div class="row">
+                <div class="col-md-auto">
+                    <mat-icon style="color: blue;" mat-list-icon>badge</mat-icon>
+                </div>
+                <div>
+                    <div mat-line><strong>{{pokemons.name}}</strong></div>
+                    <div mat-line> Name </div>
+                </div>
             </div>
-        </mat-list>
-    </p>
-    <br>
+        </div>
+        <div class="col-md-2">
+            <div class="row">
+                <div class="col-md-auto">
+                    <mat-icon style="color: green;" mat-list-icon>paid</mat-icon>
+                </div>
+                <div>
+                    <div mat-line><strong>{{pokemons.cost}}</strong></div>
+                    <div mat-line> Cost </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="row">
+                <div class="col-md-auto">
+                    <mat-icon style="color: red;" mat-list-icon>bolt</mat-icon>
+                </div>
+                <div>
+                    <div mat-line *ngIf="pokemons.fling_power==null"><strong>0</strong></div>
+                    <div mat-line *ngIf="pokemons.fling_power!=null"><strong>{{pokemons.fling_power}}</strong></div>
+                    <div mat-line> Power </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="row">
+                <div class="col-md-auto">
+                    <mat-icon mat-list-icon>
+                        blur_off</mat-icon>
+                </div>
+                <div>
+                    <div mat-line *ngIf="pokemons.fling_effect==null"><strong>0</strong></div>
+                    <div mat-line *ngIf="pokemons.fling_effect!=null"><strong>{{pokemons.fling_effect}}</strong>
+                    </div>
+                    <div mat-line> Fling effect </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="row">
+                <div class="col-md-auto">
+                    <mat-icon style="color: rgb(59, 60, 117);" mat-list-icon>
+                        category</mat-icon>
+                </div>
+                <div>
+                    <div mat-line><strong>{{pokemons.category.name}}</strong>
+                    </div>
+                    <div mat-line> Category Name </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-md-12"><strong>Effect Entries</strong></div>
+        <div class="col-md-12" *ngFor="let item of pokemons.effect_entries">
+            <p>{{item.effect}}</p>
+        </div>
+    </div>
+
 
 </mat-dialog-content>
 <mat-dialog-actions align="end">
-    <button mat-raised-button mat-dialog-close class="form-control btn-outline-info">Close</button>
+    <button mat-dialog-close class="form-control btn btn-outline-warning text-black">Close</button>
 </mat-dialog-actions>

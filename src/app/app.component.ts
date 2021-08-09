@@ -37,8 +37,8 @@ export class AppComponent {
   openDialog(url: string): void {
     this.getPokemon(url).toPromise().then((pokemon: Pokemon) => {
       this.dialog.open(PokemonDetailsComponent, {
-        width: '50%',
-        height: '80%',
+        // width: '50%',
+        // height: '80%',
         data: {
           pokemon
         }
