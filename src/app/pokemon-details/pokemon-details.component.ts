@@ -14,22 +14,10 @@ export class PokemonDetailsComponent implements OnInit {
 
   pokemons: Pokemon;
   panelOpenState: boolean = false;
-  constructor(private http: HttpClient, public dialogRef: MatDialogRef<AppComponent>, @Inject(MAT_DIALOG_DATA) public data: string) { }
+  constructor(private http: HttpClient, public dialogRef: MatDialogRef<AppComponent>, @Inject(MAT_DIALOG_DATA) public data: Pokemon) { }
 
   ngOnInit(): void {
-    this.pokemons = null;
-    const urls = { url: this.data["url"] };
-
-    this.getPokemon(urls).toPromise().then((pokemon: Pokemon) => {
-      this.pokemons = pokemon;
-      console.info(this.pokemons)
-    })
-
-  }
-
-  getPokemon(url: any) {
-
-    return this.http.post(`${environment.POKEMON_API}pokemon`, url)
+    this.pokemons = this.data["pokemon"];
   }
 }
 

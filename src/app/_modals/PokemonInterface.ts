@@ -4,6 +4,7 @@ export interface PokemonHomeDetails {
     picture: string;
     id: number;
     url: string;
+    effect_entries: Effect_Entries[];
 }
 export interface PokemonResults {
     count: number;

@@ -30,7 +30,7 @@ import { MatListModule } from '@angular/material/list';
     MatGridListModule,
     BrowserAnimationsModule,
     MatInputModule,
-    MDBBootstrapModule,
+    MDBBootstrapModule.forRoot(),
     MatIconModule,
     MatDialogModule,
     MatExpansionModule,

@@ -13,19 +13,20 @@ import { Pokemon, PokemonHomeDetails, PokemonResults, Result } from './_modals/P
 export class AppComponent {
   pokemonDetails: PokemonHomeDetails;
   pokemonHomeDetails: PokemonHomeDetails[] = [];
+  pokemon: Pokemon;
   constructor(private http: HttpClient, public dialog: MatDialog) {
 
   }
   ngOnInit() {
     this.getPokemons().toPromise().then((pokemons: PokemonResults) => {
-      console.log(pokemons);
       pokemons.results.forEach((result: Result) => {
         this.getPokemon(result.url).toPromise().then((pokemon: Pokemon) => {
           this.pokemonDetails = {
             name: result.name,
             picture: pokemon.sprites.default,
             id: pokemon.id,
-            url: result.url
+            url: result.url,
+            effect_entries: pokemon.effect_entries
           };
           this.pokemonHomeDetails.push(this.pokemonDetails);
         })
@@ -34,13 +35,16 @@ export class AppComponent {
   }
 
   openDialog(url: string): void {
-    const dialogRef = this.dialog.open(PokemonDetailsComponent, {
-      width: '50%',
-      height: '80%',
-      data: {
-        url
-      }
+    this.getPokemon(url).toPromise().then((pokemon: Pokemon) => {
+      this.dialog.open(PokemonDetailsComponent, {
+        width: '50%',
+        height: '80%',
+        data: {
+          pokemon
+        }
+      });
     });
+
   }
 
   getPokemons() {
